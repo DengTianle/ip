@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.nio.file.FileSystemNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Zazu {
@@ -14,12 +17,22 @@ public class Zazu {
         System.out.println("Hello! I'm \n" + logo);
         System.out.println("What can I do for you?\n");
 
+        ArrayList<String> list = new ArrayList<>();
+
         while (true) {
             String str = input.nextLine();
             if (str.equals("bye")) {
                 break;
             }
-            System.out.println(str);
+            if (str.equals("list")) {
+                for (int i = 0; i < list.size(); i++) {
+                    System.out.println((i+1)+". " + list.get(i));
+                }
+                System.out.println();
+            } else {
+                list.add(str);
+                System.out.println("added: " + str + "\n");
+            }
         }
 
         System.out.println("Bye. Hope to see you again soon!");
