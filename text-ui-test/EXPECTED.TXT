@@ -1,7 +1,61 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Hello! I'm 
+ ZZZZZ    AAAAA   ZZZZZ   U   U
+    Z    A     A     Z    U   U
+   Z     AAAAAAA    Z     U   U
+  Z      A     A   Z      U   U
+ ZZZZZ   A     A  ZZZZZ   UUUUU
+What can I do for you?
 
+Got it. I've added this task:
+	[T][ ] test this
+Now you have 1 tasks in the list.
+
+1.[T][ ] test this
+
+Got it. I've added this task:
+	[E][ ] test it (from: 2 to: 4)
+Now you have 2 tasks in the list.
+
+1.[T][ ] test this
+2.[E][ ] test it (from: 2 to: 4)
+
+Got it. I've added this task:
+	[D][ ] test 3 (by: tmr)
+Now you have 3 tasks in the list.
+
+1.[T][ ] test this
+2.[E][ ] test it (from: 2 to: 4)
+3.[D][ ] test 3 (by: tmr)
+
+Nice! I've marked this task as done:
+	[E][X] test it (from: 2 to: 4)
+
+1.[T][ ] test this
+2.[E][X] test it (from: 2 to: 4)
+3.[D][ ] test 3 (by: tmr)
+
+Nice! I've marked this task as done:
+	[T][X] test this
+
+1.[T][X] test this
+2.[E][X] test it (from: 2 to: 4)
+3.[D][ ] test 3 (by: tmr)
+
+Got it. I've added this task:
+	[E][ ]  (from: tmr to: day after tmr)
+Now you have 4 tasks in the list.
+
+1.[T][X] test this
+2.[E][X] test it (from: 2 to: 4)
+3.[D][ ] test 3 (by: tmr)
+4.[E][ ]  (from: tmr to: day after tmr)
+
+Nice! I've marked this task as done:
+	[E][X]  (from: tmr to: day after tmr)
+
+1.[T][X] test this
+2.[E][X] test it (from: 2 to: 4)
+3.[D][ ] test 3 (by: tmr)
+4.[E][X]  (from: tmr to: day after tmr)
+
+Bye. Hope to see you again soon!
