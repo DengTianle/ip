@@ -41,6 +41,9 @@ public class Zazu {
                     }
                     System.out.println();
                 } else if (words[0].equals("mark")) {
+                    if (words.length < 2) {
+                        throw new IncompleteCommandException("please enter an index. ");
+                    }
                     int index = Integer.parseInt(words[1]) - 1;
                     if (index < 0 || index >= list.size()) {
                         throw new InvalidIndexException();
@@ -48,6 +51,17 @@ public class Zazu {
                     list.get(index).markAsDone();
                     System.out.println("Nice! I've marked this task as done:");
                     System.out.println("\t" + list.get(index).toString() + "\n");
+                } else if (words[0].equals("delete")) {
+                    if (words.length < 2) {
+                        throw new IncompleteCommandException("please enter an index. ");
+                    }
+                    int index = Integer.parseInt(words[1]) - 1;
+                    if (index < 0 || index >= list.size()) {
+                        throw new InvalidIndexException();
+                    }
+                    System.out.println("Nice! I've deleted this task:");
+                    System.out.println("\t" + list.get(index).toString() + "\n");
+                    list.remove(index);
                 } else if (words[0].equals("todo")) {
                     String description = Zazu.join(words, 1, words.length);
                     if (description.trim().isEmpty()) {
