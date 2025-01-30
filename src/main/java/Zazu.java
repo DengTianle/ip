@@ -25,7 +25,8 @@ public class Zazu {
         System.out.println("Hello! I'm \n" + logo);
         System.out.println("What can I do for you?\n");
 
-        ArrayList<Task> list = new ArrayList<>();
+        //ArrayList<Task> list = new ArrayList<>();
+        ArrayList<Task> list = FileHandler.loadTasks();
 
         while (true) {
             try {
@@ -126,14 +127,14 @@ public class Zazu {
                     System.out.println("Please enter a known command. \n");
                 }
             } catch (InvalidIndexException | EmptyDescriptionException | IncompleteCommandException e) {
-                System.out.println(e.getMessage()+"\n");
+                System.err.println(e.getMessage()+"\n");
             } catch (Exception e) {
-                System.out.println("Error: please check your input and try again. \n");
+                System.err.println("Error: please check your input and try again. \n");
             }
         }
 
+        FileHandler.saveTasks(list);
         System.out.println("Bye. Hope to see you again soon!");
-
     }
 }
 
