@@ -1,5 +1,7 @@
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDate;
 
 public class Zazu {
     public static String join(String[] sList, int start, int end) {
@@ -27,6 +29,9 @@ public class Zazu {
 
         //ArrayList<Task> list = new ArrayList<>();
         ArrayList<Task> list = FileHandler.loadTasks();
+        if (list == null) {
+            list = new ArrayList<>();
+        }
 
         while (true) {
             try {
@@ -83,19 +88,18 @@ public class Zazu {
                         throw new IncompleteCommandException("please indicate /by. ");
                     }
                     String byStr = Zazu.join(words, byIndex + 1, words.length);
-                    if (byStr.trim().isEmpty()) {
-                        throw new IncompleteCommandException("please enter an nonempty timing. ");
-                    }
+                    //if (byStr.trim().isEmpty()) {
+                    //    throw new IncompleteCommandException("please enter an nonempty timing. ");
+                    //}
                     String description = Zazu.join(words, 1, byIndex);
                     if (description.trim().isEmpty()) {
                         throw new EmptyDescriptionException();
                     }
-                    list.add(new Deadline(description, byStr));
+                    list.add(new Deadline(description, LocalDate.parse(byStr)));
                     System.out.println("Got it. I've added this task:");
                     System.out.println("\t" + list.get(list.size() - 1));
                     System.out.println("Now you have " + list.size() + " tasks in the list.\n");
                 } else if (words[0].equals("event")) {
-
                     int fromIndex = -1;
                     int toIndex = -1;
                     for (int i = 0; i < words.length; i++) {
@@ -110,14 +114,14 @@ public class Zazu {
                     }
                     String fromStr = Zazu.join(words, fromIndex + 1, toIndex);
                     String toStr = Zazu.join(words, toIndex + 1, words.length);
-                    if (fromStr.trim().isEmpty() || toStr.trim().isEmpty()) {
-                        throw new IncompleteCommandException("please enter non-empty timings. ");
-                    }
+                    //if (fromStr.trim().isEmpty() || toStr.trim().isEmpty()) {
+                    //    throw new IncompleteCommandException("please enter non-empty timings. ");
+                    //}
                     String description = Zazu.join(words, 1, fromIndex);
                     if (description.trim().isEmpty()) {
                         throw new EmptyDescriptionException();
                     }
-                    list.add(new Event(description, fromStr, toStr));
+                    list.add(new Event(description, LocalDate.parse(fromStr), LocalDate.parse(toStr)));
                     System.out.println("Got it. I've added this task:");
                     System.out.println("\t" + list.get(list.size() - 1));
                     System.out.println("Now you have " + list.size() + " tasks in the list.\n");
@@ -127,9 +131,11 @@ public class Zazu {
                     System.out.println("Please enter a known command. \n");
                 }
             } catch (InvalidIndexException | EmptyDescriptionException | IncompleteCommandException e) {
-                System.err.println(e.getMessage()+"\n");
+                System.err.println(e.getMessage() + "\n");
+            } catch (DateTimeParseException e) {
+                System.err.println("Error: " + e.getMessage() + "\n");
             } catch (Exception e) {
-                System.err.println("Error: please check your input and try again. \n");
+                System.err.println("Unknown Error: please check your input and try again. \n");
             }
         }
 
@@ -137,5 +143,3 @@ public class Zazu {
         System.out.println("Bye. Hope to see you again soon!");
     }
 }
-
-//errors: empty description, time; unknown command; mark out of range; missing /by /from /to
