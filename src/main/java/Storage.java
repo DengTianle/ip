@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 
-public class FileHandler {
+public class Storage {
     private static final String FILE_NAME = "tasks.json";
     private static final Gson GSON = new GsonBuilder()
             .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
