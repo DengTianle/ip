@@ -80,7 +80,9 @@ public class Zazu {
                      UnknownCommandException e) {
                 System.err.println(e.getMessage() + "\n");
             } catch (DateTimeParseException e) {
-                System.err.println("Error: " + e.getMessage() + "\n");
+                System.err.println("Error: " + "please enter time in the correct format. " + "\n");
+            } catch (NumberFormatException e) {
+                System.err.println(new InvalidIndexException().getMessage() + "\n");
             } catch (Exception e) {
                 System.err.println("Unknown Error: please check your input and try again. \n");
             }
