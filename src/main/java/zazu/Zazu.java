@@ -1,3 +1,17 @@
+package zazu;
+
+import zazu.data.TaskList;
+import zazu.data.exception.EmptyDescriptionException;
+import zazu.data.exception.IncompleteCommandException;
+import zazu.data.exception.InvalidIndexException;
+import zazu.data.exception.UnknownCommandException;
+import zazu.data.task.Task;
+import zazu.data.task.Todo;
+import zazu.data.task.Deadline;
+import zazu.data.task.Event;
+import zazu.parser.Parser;
+import zazu.storage.Storage;
+import zazu.ui.Ui;
 import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
 
@@ -62,7 +76,8 @@ public class Zazu {
                         ui.printAdd(task);
                         break;
                 }
-            } catch (InvalidIndexException | EmptyDescriptionException | IncompleteCommandException | UnknownCommandException e) {
+            } catch (InvalidIndexException | EmptyDescriptionException | IncompleteCommandException |
+                     UnknownCommandException e) {
                 System.err.println(e.getMessage() + "\n");
             } catch (DateTimeParseException e) {
                 System.err.println("Error: " + e.getMessage() + "\n");

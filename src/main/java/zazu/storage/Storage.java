@@ -1,8 +1,12 @@
+package zazu.storage;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+import zazu.data.task.Task;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;

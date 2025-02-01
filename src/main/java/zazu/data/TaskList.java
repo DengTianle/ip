@@ -1,3 +1,8 @@
+package zazu.data;
+
+import zazu.data.exception.InvalidIndexException;
+import zazu.data.task.Task;
+
 import java.util.ArrayList;
 
 public class TaskList {

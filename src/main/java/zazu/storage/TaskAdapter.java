@@ -1,4 +1,4 @@
-//import com.google.gson.*;
+package zazu.storage;//import com.google.gson.*;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -6,6 +6,10 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.JsonObject;
+import zazu.data.task.Deadline;
+import zazu.data.task.Event;
+import zazu.data.task.Task;
+import zazu.data.task.Todo;
 
 import java.lang.reflect.Type;
 

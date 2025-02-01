@@ -1,3 +1,9 @@
+package zazu.parser;
+
+import zazu.data.exception.EmptyDescriptionException;
+import zazu.data.exception.IncompleteCommandException;
+import zazu.data.exception.UnknownCommandException;
+
 public class Parser {
     public final static String BYE = "bye";
     public final static String LIST = "list";
