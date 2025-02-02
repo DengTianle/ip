@@ -15,10 +15,24 @@ import zazu.ui.Ui;
 import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
 
+/**
+ * Main class for running the Zazu chatbot application.
+ * This class manages the main application flow, including task management,
+ * user interactions, and saving/loading tasks.
+ */
 public class Zazu {
+
+    /** The task list managed by the application */
     private TaskList list;
+
+    /** The user interface that interacts with the user */
     private Ui ui;
 
+    /**
+     * Runs the Zazu chatbot application.
+     * This method loads the task list, continuously prompts for user input,
+     * and processes commands until the user exits.
+     */
     public void run() {
         list = new TaskList(Storage.loadTasks());
         this.ui = new Ui(list);
@@ -90,6 +104,13 @@ public class Zazu {
         System.out.println("Bye. Hope to see you again soon!");
         Storage.saveTasks(list.getList());
     }
+
+    /**
+     * Main method to run the Zazu application.
+     * Initializes and starts the Zazu application.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         new Zazu().run();
     }
