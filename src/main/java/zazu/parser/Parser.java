@@ -31,6 +31,7 @@ public class Parser {
 
     /** Command for creating an event task */
     public final static String EVENT = "event";
+    public final static String FIND = "find";
 
     /**
      * Joins a portion of a string array into a single string.
@@ -76,6 +77,8 @@ public class Parser {
             return Parser.DEADLINE;
         } else if (words[0].equals("event")) {
             return Parser.EVENT;
+        } else if (words[0].equals("find")) {
+            return Parser.FIND;
         } else {
             throw new UnknownCommandException();
         }
