@@ -16,7 +16,8 @@ import java.lang.reflect.Type;
 
 public class TaskAdapter implements JsonDeserializer<Task>, JsonSerializer<Task> {
     @Override
-    public Task deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public Task deserialize(JsonElement json, Type typeOfT,
+            JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
         String type = jsonObject.get("type").getAsString(); // Identify the subclass
 

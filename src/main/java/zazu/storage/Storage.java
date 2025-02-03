@@ -47,8 +47,8 @@ public class Storage {
             return GSON.fromJson(reader, listType);
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
-        //} catch (Exception e) {
-        //    System.err.println("File corrupted. Starting with an empty task list.");
+        } catch (Exception e) {
+            System.err.println("File corrupted. Starting with an empty task list.");
         }
 
         return new ArrayList<>();

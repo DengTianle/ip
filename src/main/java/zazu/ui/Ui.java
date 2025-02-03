@@ -28,6 +28,7 @@ public class Ui {
         System.out.println("Hello! I'm \n" + logo);
         System.out.println("What can I do for you?\n");
     }
+
     public void printList() throws InvalidIndexException {
         for (int i = 0; i < list.getSize(); i++) {
             System.out.println((i + 1) + "." + list.getTask(i).toString());
