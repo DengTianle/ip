@@ -14,6 +14,7 @@ import zazu.storage.Storage;
 import zazu.ui.Ui;
 import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Zazu {
     private TaskList list;
@@ -74,6 +75,11 @@ public class Zazu {
                         task = new Event(description, LocalDate.parse(fromStr), LocalDate.parse(toStr));
                         list.addTask(task);
                         ui.printAdd(task);
+                        break;
+                    case Parser.FIND:
+                        description = Parser.parseDescription(str);
+                        ArrayList<Task> matches = list.matchTasks(description);
+                        ui.printFind(matches);
                         break;
                 }
             } catch (InvalidIndexException | EmptyDescriptionException | IncompleteCommandException |

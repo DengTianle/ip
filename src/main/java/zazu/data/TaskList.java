@@ -40,4 +40,14 @@ public class TaskList {
     public ArrayList<Task> getList() {
         return this.list;
     }
+
+    public ArrayList<Task> matchTasks(String pattern) {
+        ArrayList<Task> tasks = new ArrayList<>();
+        for (Task task : list) {
+            if (task.getDescription().contains(pattern)) {
+                tasks.add(task);
+            }
+        }
+        return tasks;
+    }
 }

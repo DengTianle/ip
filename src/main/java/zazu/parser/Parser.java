@@ -12,6 +12,7 @@ public class Parser {
     public final static String TODO = "todo";
     public final static String DEADLINE = "deadline";
     public final static String EVENT = "event";
+    public final static String FIND = "find";
 
     public static String join(String[] sList, int start, int end) {
         StringBuilder sb = new StringBuilder();
@@ -41,6 +42,8 @@ public class Parser {
             return Parser.DEADLINE;
         } else if (words[0].equals("event")) {
             return Parser.EVENT;
+        } else if (words[0].equals("find")) {
+            return Parser.FIND;
         } else {
             throw new UnknownCommandException();
         }
