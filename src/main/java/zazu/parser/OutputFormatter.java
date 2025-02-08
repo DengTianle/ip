@@ -1,4 +1,4 @@
-package zazu.ui;
+package zazu.parser;
 
 import zazu.data.TaskList;
 import zazu.data.exception.InvalidIndexException;
@@ -11,7 +11,7 @@ import java.util.Scanner;
  * User interface class for interacting with the task list.
  * This class handles displaying messages to the user, reading input, and printing task information.
  */
-public class Ui {
+public class OutputFormatter {
     /** The task list being managed by the UI */
     private TaskList list;
 
@@ -22,26 +22,13 @@ public class Ui {
             "  Z      A     A   Z      U   U\n" +
             " ZZZZZ   A     A  ZZZZZ   UUUUU";
 
-    /** Scanner object for reading user input */
-    private Scanner input;
-
     /**
      * Constructs a new {@code Ui} object with the specified task list.
      *
      * @param list The {@link TaskList} object to interact with.
      */
-    public Ui(TaskList list) {
+    public OutputFormatter(TaskList list) {
         this.list = list;
-        this.input = new Scanner(System.in);
-    }
-
-    /**
-     * Reads the next line of input from the user.
-     *
-     * @return The user input as a string.
-     */
-    public String readInput() {
-        return input.nextLine();
     }
 
     /**
@@ -57,11 +44,13 @@ public class Ui {
      *
      * @throws InvalidIndexException If there is an invalid index when fetching tasks.
      */
-    public void printList() throws InvalidIndexException {
+    public String printList() throws InvalidIndexException {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < list.getSize(); i++) {
-            System.out.println((i + 1) + "." + list.getTask(i).toString());
+            sb.append((i + 1) + "." + list.getTask(i).toString());
+            sb.append("\n");
         }
-        System.out.println();
+        return sb.toString();
     }
 
     /**
@@ -69,8 +58,8 @@ public class Ui {
      *
      * @param task The {@link Task} to print.
      */
-    public void printTask(Task task) {
-        System.out.println("\t" + task.toString());
+    public String printTask(Task task) {
+        return "\t" + task.toString();
     }
 
     /**
@@ -78,10 +67,13 @@ public class Ui {
      *
      * @param task The {@link Task} that has been marked as done.
      */
-    public void printMark(Task task) {
-        System.out.println("Nice! I've marked this task as done:");
-        this.printTask(task);
-        System.out.println();
+    public String printMark(Task task) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Nice! I've marked this task as done:");
+        sb.append("\n");
+        sb.append(this.printTask(task));
+        sb.append("\n");
+        return sb.toString();
     }
 
     /**
@@ -89,10 +81,13 @@ public class Ui {
      *
      * @param task The {@link Task} that has been deleted.
      */
-    public void printDelete(Task task) {
-        System.out.println("Nice! I've deleted this task:");
-        this.printTask(task);
-        System.out.println();
+    public String printDelete(Task task) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Nice! I've deleted this task:");
+        sb.append("\n");
+        sb.append(this.printTask(task));
+        sb.append("\n");
+        return sb.toString();
     }
 
     /**
@@ -100,16 +95,23 @@ public class Ui {
      *
      * @param task The {@link Task} that has been added.
      */
-    public void printAdd(Task task) {
-        System.out.println("Got it. I've added this task:");
-        this.printTask(task);
-        System.out.println("Now you have " + list.getSize() + " tasks in the list.\n");
+    public String printAdd(Task task) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Got it. I've added this task:");
+        sb.append("\n");
+        sb.append(this.printTask(task));
+        sb.append("\n");
+        sb.append("Now you have " + list.getSize() + " tasks in the list.\n");
+        return sb.toString();
     }
 
-    public void printFind(ArrayList<Task> tasks) {
-        System.out.println("Here are the matching tasks in your list:");
+    public String printFind(ArrayList<Task> tasks) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Here are the matching tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println((i + 1) + "." + tasks.get(i).toString() + "\n");
+            sb.append((i + 1) + "." + tasks.get(i).toString() + "\n");
+            sb.append("\n");
         }
+        return sb.toString();
     }
 }
