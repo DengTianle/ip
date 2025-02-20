@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-    String javaFxVersion = '17.0.7'
+    String javaFxVersion = '17.0.14'
 
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
@@ -44,7 +44,7 @@ test {
 }
 
 application {
-    mainClass.set("Launcher")
+    mainClass.set("zazu.Launcher")
 }
 
 shadowJar {
