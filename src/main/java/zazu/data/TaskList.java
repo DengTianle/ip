@@ -84,6 +84,7 @@ public class TaskList {
     public ArrayList<Task> matchTasks(String pattern) {
         ArrayList<Task> tasks = new ArrayList<>();
         for (Task task : list) {
+            assert task != null;
             if (task.getDescription().contains(pattern)) {
                 tasks.add(task);
             }
