@@ -156,7 +156,7 @@ public class Parser {
             }
         }
         if (byIndex == -1) {
-            throw new IncompleteCommandException("please indicate " + BY +". ");
+            throw new IncompleteCommandException("please indicate " + BY + ". ");
         }
         result[0] = Parser.parseDescription(words, byIndex);
         result[1] = Parser.join(words, byIndex + 1, words.length);
@@ -185,7 +185,7 @@ public class Parser {
             }
         }
         if (fromIndex == -1 || toIndex == -1 || fromIndex >= toIndex) {
-            throw new IncompleteCommandException("please use both "+ FROM + " and " + TO + " commands in the correct order. ");
+            throw new IncompleteCommandException("please use both " + FROM + " and " + TO + " commands in the correct order. ");
         }
         result[1] = Parser.join(words, fromIndex + 1, toIndex);
         result[2] = Parser.join(words, toIndex + 1, words.length);
