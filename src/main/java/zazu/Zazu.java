@@ -95,6 +95,8 @@ public class Zazu extends Application {
                     description = Parser.parseDescription(str);
                     ArrayList<Task> matches = list.matchTasks(description);
                     return out.printFind(matches);
+                default:
+                    throw new UnknownCommandException();
             }
         } catch (InvalidIndexException | EmptyDescriptionException | IncompleteCommandException |
                  UnknownCommandException e) {
