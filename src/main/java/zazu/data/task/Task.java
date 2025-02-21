@@ -31,13 +31,6 @@ public class Task {
     }
 
     /**
-     * Returns the type of the task.
-     */
-    public String getType() {
-        return this.type;
-    }
-
-    /**
      * Returns the status icon of the task. If the task is done, it returns "X",
      * otherwise it returns a space.
      *
@@ -59,15 +52,6 @@ public class Task {
      */
     public void markAsDone() {
         this.isDone = true;
-    }
-
-    /**
-     * Checks if the task is marked as done.
-     *
-     * @return true if the task is done, false otherwise.
-     */
-    public boolean isDone() {
-        return this.isDone;
     }
 
     /**
