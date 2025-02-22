@@ -33,14 +33,6 @@ public class OutputFormatter {
     }
 
     /**
-     * Prints a welcome message and the program logo.
-     */
-    public void printWelcome() {
-        System.out.println("Hello! I'm \n" + logo);
-        System.out.println("What can I do for you?\n");
-    }
-
-    /**
      * Prints the entire list of tasks.
      *
      * @throws InvalidIndexException If there is an invalid index when fetching tasks.

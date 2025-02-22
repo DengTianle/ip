@@ -31,7 +31,18 @@ public class Parser {
 
     /** Command for creating an event task */
     public final static String EVENT = "event";
+
+    /** Command for finding tasks with matching description */
     public final static String FIND = "find";
+
+    /** Keyword to indicate when an event begins */
+    public final static String FROM = "/from";
+
+    /** Keyword to indicate when an event ends */
+    public final static String TO = "/to";
+
+    /** Keyword to indicate when a deadline is */
+    public final static String BY = "/by";
 
     /**
      * Joins a portion of a string array into a single string.
@@ -140,12 +151,12 @@ public class Parser {
         int byIndex = -1;
         String[] words = str.split(" ");
         for (int i = 0; i < words.length; i++) {
-            if (words[i].equals("/by")) {
+            if (words[i].equals(BY)) {
                 byIndex = i;
             }
         }
         if (byIndex == -1) {
-            throw new IncompleteCommandException("please indicate /by. ");
+            throw new IncompleteCommandException("please indicate " + BY + ". ");
         }
         result[0] = Parser.parseDescription(words, byIndex);
         result[1] = Parser.join(words, byIndex + 1, words.length);
@@ -167,14 +178,14 @@ public class Parser {
         int fromIndex = -1;
         int toIndex = -1;
         for (int i = 0; i < words.length; i++) {
-            if (words[i].equals("/from")) {
+            if (words[i].equals(FROM)) {
                 fromIndex = i;
-            } else if (words[i].equals("/to")) {
+            } else if (words[i].equals(TO)) {
                 toIndex = i;
             }
         }
         if (fromIndex == -1 || toIndex == -1 || fromIndex >= toIndex) {
-            throw new IncompleteCommandException("please use both /from and /to commands in the correct order. ");
+            throw new IncompleteCommandException("please use both " + FROM + " and " + TO + " commands in the correct order. ");
         }
         result[1] = Parser.join(words, fromIndex + 1, toIndex);
         result[2] = Parser.join(words, toIndex + 1, words.length);

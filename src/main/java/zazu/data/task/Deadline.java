@@ -26,15 +26,6 @@ public class Deadline extends Task {
     }
 
     /**
-     * Returns the deadline date by which the task must be completed.
-     *
-     * @return the deadline date of the task.
-     */
-    public LocalDate getBy() {
-        return this.by;
-    }
-
-    /**
      * Returns a string representation of the deadline task.
      * Include status icon, description, and the
      * deadline date formatted as "d MMM yyyy".
