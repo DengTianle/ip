@@ -57,47 +57,50 @@ public class Zazu extends Application {
 
         try {
             switch (Parser.identifyCommand(str)) {
-                case Parser.BYE:
-                    this.handleExit();
-                    break;
-                case Parser.LIST:
-                    return out.printList();
-                case Parser.MARK:
-                    index = Parser.parseIndex(str);
-                    task = list.getTask(index);
-                    task.markAsDone();
-                    return out.printMark(task);
-                case Parser.DELETE:
-                    index = Parser.parseIndex(str);
-                    task = list.deleteTask(index);
-                    return out.printDelete(task);
-                case Parser.TODO:
-                    description = Parser.parseDescription(str);
-                    task = new Todo(description);
-                    list.addTask(task);
-                    return out.printAdd(task);
-                case Parser.DEADLINE:
-                    result = Parser.parseDeadline(str);
-                    String byStr = result[1];
-                    description = result[0];
-                    task = new Deadline(description, LocalDate.parse(byStr));
-                    list.addTask(task);
-                    return out.printAdd(task);
-                case Parser.EVENT:
-                    result = Parser.parseEvent(str);
-                    String fromStr = result[1];
-                    String toStr = result[2];
-                    description = result[0];
-                    task = new Event(description, LocalDate.parse(fromStr), LocalDate.parse(toStr));
-                    list.addTask(task);
-                    return out.printAdd(task);
-                case Parser.FIND:
-                    description = Parser.parseDescription(str);
-                    ArrayList<Task> matches = list.matchTasks(description);
-                    return out.printFind(matches);
-                default:
-                    throw new UnknownCommandException();
-            }
+            case Parser.BYE:
+                this.handleExit();
+                break;
+            case Parser.LIST:
+                return out.printList();
+            case Parser.MARK:
+                index = Parser.parseIndex(str);
+                task = list.getTask(index);
+                task.markAsDone();
+                return out.printMark(task);
+            case Parser.DELETE:
+                index = Parser.parseIndex(str);
+                task = list.deleteTask(index);
+                return out.printDelete(task);
+            case Parser.TODO:
+                description = Parser.parseDescription(str);
+                task = new Todo(description);
+                list.addTask(task);
+                return out.printAdd(task);
+            case Parser.DEADLINE:
+                result = Parser.parseDeadline(str);
+                String byStr = result[1];
+                description = result[0];
+                task = new Deadline(description, LocalDate.parse(byStr));
+                list.addTask(task);
+                return out.printAdd(task);
+            case Parser.EVENT:
+                result = Parser.parseEvent(str);
+                String fromStr = result[1];
+                String toStr = result[2];
+                description = result[0];
+                task = new Event(description, LocalDate.parse(fromStr), LocalDate.parse(toStr));
+                list.addTask(task);
+                return out.printAdd(task);
+            case Parser.FIND:
+                description = Parser.parseDescription(str);
+                ArrayList<Task> matches = list.matchTasks(description);
+                return out.printFind(matches);
+            case Parser.SORT:
+                list.sort();
+                return out.printSort();
+            default:
+                throw new UnknownCommandException();
+        }
         } catch (InvalidIndexException | EmptyDescriptionException | IncompleteCommandException |
                  UnknownCommandException e) {
             System.err.println(e.getMessage() + "\n");

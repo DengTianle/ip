@@ -35,6 +35,9 @@ public class Parser {
     /** Command for finding tasks with matching description */
     public final static String FIND = "find";
 
+    /** Command for sorting the task list */
+    public final static String SORT = "sort";
+
     /** Keyword to indicate when an event begins */
     public final static String FROM = "/from";
 
@@ -90,6 +93,8 @@ public class Parser {
             return Parser.EVENT;
         } else if (words[0].equals("find")) {
             return Parser.FIND;
+        } else if (words[0].equals("sort")) {
+            return Parser.SORT;
         } else {
             throw new UnknownCommandException();
         }

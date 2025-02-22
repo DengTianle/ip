@@ -31,17 +31,20 @@ public class Event extends Task {
     }
 
     /**
-     * Returns the start date of the event.
-     */
-    public LocalDate getFrom() {
-        return this.from;
-    }
-
-    /**
      * Returns the end date of the event.
      */
     public LocalDate getTo() {
         return this.to;
+    }
+
+    /**
+     * Return the start date converted to integer for sorting.
+     *
+     * @return start date in integer (yyyy-MM-dd) format
+     */
+    @Override
+    public int valueForSort() {
+        return Integer.parseInt(from.format(DateTimeFormatter.ofPattern("yyyyMMdd")));
     }
 
     /**
