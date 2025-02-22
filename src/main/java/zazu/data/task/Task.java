@@ -54,6 +54,10 @@ public class Task {
         this.isDone = true;
     }
 
+    public int valueForSort() {
+        return Integer.MAX_VALUE;
+    }
+
     /**
      * Returns a string representation of the task.
      * Including its status icon and description.

@@ -106,4 +106,8 @@ public class OutputFormatter {
         }
         return sb.toString();
     }
+
+    public String printSort() throws InvalidIndexException {
+        return "I have sorted the list in chronological order!" + "\n" + this.printList();
+    }
 }

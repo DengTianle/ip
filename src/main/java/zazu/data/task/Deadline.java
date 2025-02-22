@@ -26,6 +26,16 @@ public class Deadline extends Task {
     }
 
     /**
+     * Return the deadline date converted to integer for sorting.
+     *
+     * @return deadline date in integer (yyyy-MM-dd) format
+     */
+    @Override
+    public int valueForSort() {
+        return Integer.parseInt(by.format(DateTimeFormatter.ofPattern("yyyyMMdd")));
+    }
+
+    /**
      * Returns a string representation of the deadline task.
      * Include status icon, description, and the
      * deadline date formatted as "d MMM yyyy".

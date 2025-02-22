@@ -4,6 +4,7 @@ import zazu.data.exception.InvalidIndexException;
 import zazu.data.task.Task;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * Represents a list of tasks and provides operations to manipulate the list.
@@ -90,5 +91,12 @@ public class TaskList {
             }
         }
         return tasks;
+    }
+
+    /**
+     * Sort the task list in chronological order.
+     */
+    public void sort() {
+        this.list.sort(Comparator.comparingInt(Task::valueForSort));
     }
 }
