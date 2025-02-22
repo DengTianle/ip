@@ -28,6 +28,7 @@ public class OutputFormatter {
      * @param list The {@link TaskList} object to interact with.
      */
     public OutputFormatter(TaskList list) {
+        assert list != null;
         this.list = list;
     }
 
@@ -99,10 +100,9 @@ public class OutputFormatter {
 
     public String printFind(ArrayList<Task> tasks) {
         StringBuilder sb = new StringBuilder();
-        sb.append("Here are the matching tasks in your list:");
+        sb.append("Here are the matching tasks in your list:\n");
         for (int i = 0; i < tasks.size(); i++) {
             sb.append((i + 1) + "." + tasks.get(i).toString() + "\n");
-            sb.append("\n");
         }
         return sb.toString();
     }
