@@ -23,14 +23,14 @@ Example: `todo laundry`
 ### Add an item with a deadline: `deadline`
 Format: `deadline DESCRIPTION /by yyyy-MM-dd`
 The `/by` indicates the deadline.
->:warning: The date must be in the format yyyy-MM-dd!
+>⚠️ The date must be in the format yyyy-MM-dd!
 
 Example: `deadline HW /by 2025-02-28`
 
 ### Add an event item with start and end dates: `event`
 Format: `event DESCRIPTION /from yyyy-MM-dd /to yyyy-MM-dd`
 The `/from` and `/to` indicate the start and end dates respectively. They must be in the correct order as shown above. 
->:warning: The dates must be in the format yyyy-MM-dd!
+>⚠️ The dates must be in the format yyyy-MM-dd!
 
 Example: `event career fair /from 2025-02-10 /to 2025-02-11`
 ### Mark an item as done: `mark`
@@ -51,7 +51,7 @@ Example: `delete 2`
 Format: `find KEYWORD`
 
 Search for all items whose descriptions contains the given keyword. 
-> :warning:
+> ⚠️
 > The search is case-sensitive. 
 > Any manner of containment of the keyword is considered, e.g. "deadline" contains "line". 
 
