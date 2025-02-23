@@ -52,10 +52,17 @@ public class DialogBox extends HBox {
         return new DialogBox(text, img);
     }
 
-    public static DialogBox getDukeDialog(String text, Image img) {
+    public static DialogBox getDukeDialog(String text, Image img, Boolean isError) {
         var db = new DialogBox(text, img);
         db.flip();
+        if (isError) {
+            db.toRed();
+        }
         return db;
+    }
+
+    public void toRed() {
+        this.dialog.setStyle("-fx-text-fill: red;");
     }
 }
 

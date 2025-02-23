@@ -10,6 +10,7 @@ import zazu.data.TaskList;
 import zazu.data.exception.EmptyDescriptionException;
 import zazu.data.exception.IncompleteCommandException;
 import zazu.data.exception.InvalidIndexException;
+import zazu.data.exception.ResponseException;
 import zazu.data.exception.UnknownCommandException;
 import zazu.data.task.Task;
 import zazu.data.task.Todo;
@@ -49,8 +50,9 @@ public class Zazu extends Application {
         Platform.exit();
     }
 
-    public String getResponse(String str) {
+    public String getResponse(String str) throws ResponseException {
         int index;
+        String errorMessage = "ERROR";
         String description;
         String[] result;
         Task task;
@@ -103,15 +105,17 @@ public class Zazu extends Application {
         }
         } catch (InvalidIndexException | EmptyDescriptionException | IncompleteCommandException |
                  UnknownCommandException e) {
-            System.err.println(e.getMessage() + "\n");
+            errorMessage = e.getMessage();
         } catch (DateTimeParseException e) {
-            System.err.println("Error: " + "please enter time in the correct format. " + "\n");
+            errorMessage = "Error: " + "please enter time in the correct format. ";
         } catch (NumberFormatException e) {
-            System.err.println(new InvalidIndexException().getMessage() + "\n");
+            errorMessage = new InvalidIndexException().getMessage();
         } catch (Exception e) {
-            System.err.println("Unknown Error: please check your input and try again. \n");
+            errorMessage = "Unknown Error: please check your input and try again. ";
         }
-        return "ERROR";
+
+        System.err.println(errorMessage + "\n");
+        throw new ResponseException(errorMessage);
     }
 
     @Override
@@ -123,16 +127,15 @@ public class Zazu extends Application {
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setZazu(this);
 
-            stage.setOnCloseRequest(event -> {
-                event.consume();
-                handleExit();
-            });
+            stage.setTitle("Zazu");
+            stage.setResizable(false);
+            stage.setMinHeight(600.0);
+            stage.setMinWidth(400.0);
 
             this.list = new TaskList(Storage.loadTasks());
             this.out = new OutputFormatter(this.list);
 
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

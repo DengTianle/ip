@@ -5,7 +5,6 @@ import zazu.data.exception.InvalidIndexException;
 import zazu.data.task.Task;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * User interface class for interacting with the task list.
@@ -15,13 +14,6 @@ public class OutputFormatter {
     /** The task list being managed by the UI */
     private TaskList list;
 
-    /** Logo to display at the start of the program */
-    private String logo = " ZZZZZ    AAAAA   ZZZZZ   U   U\n" +
-            "    Z    A     A     Z    U   U\n" +
-            "   Z     AAAAAAA    Z     U   U\n" +
-            "  Z      A     A   Z      U   U\n" +
-            " ZZZZZ   A     A  ZZZZZ   UUUUU";
-
     /**
      * Constructs a new {@code Ui} object with the specified task list.
      *
@@ -30,6 +22,13 @@ public class OutputFormatter {
     public OutputFormatter(TaskList list) {
         assert list != null;
         this.list = list;
+    }
+
+    /**
+     * Prints a welcome message and the program logo.
+     */
+    public static String printWelcome() {
+        return "Hello! I'm Zazu. What can I do for you?";
     }
 
     /**

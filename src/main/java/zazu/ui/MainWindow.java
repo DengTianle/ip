@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import zazu.Zazu;
+import zazu.data.exception.ResponseException;
+import zazu.parser.OutputFormatter;
 
 /**
  * Controller for the main GUI.
@@ -30,6 +32,7 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        dialogContainer.getChildren().add(DialogBox.getDukeDialog(OutputFormatter.printWelcome(), dukeImage, false));
     }
 
     /** Injects the Zazu instance */
@@ -44,12 +47,30 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
-        String response = zazu.getResponse(input);
+        String response;
+        Boolean isError = false;
+
+        try {
+            response = zazu.getResponse(input);
+        } catch(ResponseException e) {
+            response = e.getMessage();
+            isError = true;
+        }
+
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getDukeDialog(response, dukeImage, isError)
         );
         userInput.clear();
+    }
+
+    /**
+     * Show a welcome message when the program starts.
+     *
+     * @param text message to display
+     */
+    @FXML
+    public void showWelcomeMessage(String text) {
     }
 }
 
