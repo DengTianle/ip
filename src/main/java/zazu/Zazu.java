@@ -132,6 +132,10 @@ public class Zazu extends Application {
             stage.setMinHeight(600.0);
             stage.setMinWidth(400.0);
 
+            stage.setOnCloseRequest(event -> {
+                handleExit();
+            });
+
             this.list = new TaskList(Storage.loadTasks());
             this.out = new OutputFormatter(this.list);
 

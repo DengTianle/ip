@@ -10,4 +10,3 @@ public class Launcher {
         Application.launch(Zazu.class, args);
     }
 }
-
